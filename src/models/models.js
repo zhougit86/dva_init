@@ -2,9 +2,8 @@
  * Created by Administrator on 2017-06-15.
  */
 
-// import React from 'react';
 
-var countModel = {
+let countModel = {
   namespace: 'count',
   state: {
     record: 0,
@@ -38,4 +37,4 @@ function delay(timeout) {
   });
 }
 
-export default countModel
+export  {countModel}

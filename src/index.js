@@ -1,7 +1,7 @@
 import dva from 'dva';
 import { Route, Router} from 'dva/router';
 import React from 'react';
-import countModel from './models/models.js'
+import {countModel} from './models/models.js'
 import HomePage from './components/Count/counts.js'
 import './index.html';
 
