@@ -3,6 +3,7 @@
  */
 
 import {delay} from 'redux-saga'
+import key from 'keymaster'
 
 let countModel = {
   namespace: 'count',
@@ -11,7 +12,7 @@ let countModel = {
     current: 0,
   },
   reducers: {
-    add(state,action) {
+    add(state, action) {
       const newCurrent = state.current + action.value;
       return {
         ...state,
@@ -19,17 +20,23 @@ let countModel = {
         current: newCurrent,
       };
     },
-    minus(state,action) {
+    minus(state, action) {
       return {...state, current: state.current - action.value};
     },
   },
-
   effects: {
     *add(action, {call, put}) {
-      yield call(delay, 2000);
-      yield put({type: 'minus',value:action.value});
+      yield call(delay, 1000);
+      yield put({type: 'minus', value: action.value});
     },
   },
+  subscriptions: {
+    keyboardWatcher({dispatch}) {
+      key('⌘+up, ctrl+up', () => {
+        dispatch({type: 'add',value: 2})
+      });
+    },
+  }
 };
 
 // function delay(timeout) {
