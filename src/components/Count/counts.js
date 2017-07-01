@@ -13,7 +13,7 @@ const CountApp = ({count, dispatch}) => {
       <div className={styles.current}>{count.current}</div>
       <div className={styles.button}>
         <button onClick={() => {
-          dispatch({type: 'count/add'});
+          dispatch({type: 'count/add',value:3});
         }}>+
         </button>
       </div>
@@ -25,7 +25,9 @@ const CountApp = ({count, dispatch}) => {
 function mapStateToProps(state) {
   return {count: state.count};
 }
-const HomePage = connect(mapStateToProps)(CountApp);
+const HomePage = connect(
+  mapStateToProps
+)(CountApp);
 
 
 export default HomePage
